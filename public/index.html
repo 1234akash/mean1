@@ -1,0 +1,93 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<title>crud project</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/mycss.css">
+	</head>
+    <body ng-app="myApp">
+    	<div class="conatiner" ng-controller="myCtrl" class="center" ng-init="initialize()">
+        {{employees}}
+    		<h1>Basic Crud Operation</h1>
+            <table class="table">
+            	<thead>
+            		<tr>
+            			<td>Name</td>
+            			<td>Email</td>
+            			<td>Contact No</td>
+            			<td>Action</td>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			<td><input type="text"  ng-model="employee.name"></td>
+            			<td><input type="text"  ng-model="employee.email"></td>
+            			<td><input type="text"  ng-model="employee.number"></td>
+            			<td>
+            				<input type="button" name="add" value="Add Contact" ng-click="addcontact()">
+                            <input type="button" name="add" value="Clear" ng-click="cleardata()">
+            			</td>
+            		</tr>
+            		<tr ng-repeat="employee in employees">
+            			<td>{{employee.name}}</td>
+            			<td>{{employee.email}}</td>
+            			<td>{{employee.number}}</td>
+                         <td>
+                            <input type="button" name="add" value="Update" ng-click="updatedata(employee._id)" data-toggle="modal" data-target="#myModal">
+                            <input type="button" value="Remove" ng-click="remove(employee._id)">
+                        </td>
+            		</tr>
+            	</tbody>
+            </table>
+           
+
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">CLOSE</h4>
+        </div>
+        <div class="modal-body">
+          <table class="tabel">
+                <thead>
+                   <tr>
+                      <td>Name</td>
+                      <td>Email</td>
+                      <td>Contact No</td>
+                   </tr>    
+                </thead>
+                <tbody>
+                   <tr>
+                      <td><input type="text" ng-model="employee[0].name"></td>
+                      <td><input type="text" ng-model="employee[0].email"></td>
+                      <td><input type="text" ng-model="employee[0].number"></td>
+                   </tr> 
+                </tbody>
+           </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="updatedata1(employee[0])" data-dismiss="modal">UPDATE</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+
+    	</div>
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="controllers/controller.js"></script>
+    </body>
+</html>
